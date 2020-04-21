@@ -13,21 +13,28 @@ jobs:
         name: checkout
       - run: |
           cd pr_title_check
-          echo "---------------------------------------"
           yarn install
           echo "---------------------------------------"
           yarn run build
-          echo "---------------------------------------"
-          yarn run tests
         name: build
+      - run: |
+          cd pr_title_check
+          yarn run tests
+        name: unit tests
+      - run: |
+          cd pr_title_check
+          yarn run integration
+        name: integration tests
 
   # Nothing really to test, becuase it's for PRs
   test_e2e: # make sure the action works on a clean machine without building
-    needs:
-      - build_test
+    #needs:
+    #  - build_test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: ./pr_title_check
         with:
-          pattern: '^\[?KEY-\d+\]?\s?'
+          message: PR title does not match
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          matchJira: 1

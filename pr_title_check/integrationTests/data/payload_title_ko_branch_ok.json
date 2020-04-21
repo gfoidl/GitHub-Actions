@@ -1,0 +1,9 @@
+{
+    "pull_request": {
+        "head": {
+            "ref": "KEY-123_dummy_pr"
+        },
+        "number": 2,
+        "title": "Dummy PR"
+    }
+}
