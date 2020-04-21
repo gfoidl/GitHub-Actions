@@ -1,14 +1,13 @@
 # NPM
-node_modules
+#node_modules		# needed for GH-Actions
 npm-debug.log*
 
 # TypeScript
-*.js
+#*.js				# needed for GH-Actions
 *.map
 *.d.ts
 
 # Misc
 /.vs
 tsconfig.tsbuildinfo
-lib
 out
