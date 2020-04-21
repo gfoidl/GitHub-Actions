@@ -1,0 +1,37 @@
+{
+    "name"       : "gfoidl-github-actions",
+    "version"    : "0.1.0",
+    "private"    : true,
+    "description": "GitHub-Actions from gfoidl",
+    "main"       : "dist/main.js",
+    "scripts"    : {
+        "build"       : "tsc --build --verbose",
+        "clean"       : "tsc --build --clean",
+        "tests"       : "alsatian out/tests/**/*.js",
+        "test-results": "alsatian out/tests/**/*.js --tap | tap-junit -o out/tests -n test-results.xml"
+    },
+    "repository": {
+        "type": "git",
+        "url" : "git+https://github.com/gfoidl/GitHub-Actions.git"
+    },
+    "author"      : "gfoidl",
+    "license"     : "MIT",
+    "dependencies": {
+        "@actions/core": "^1.2.0",
+        "tslib"        : "^1.11.1"
+    },
+    "devDependencies": {
+        "@types/node" : "^12.7.12",
+        "alsatian"    : "^3.2.1",
+        "module-alias": "^2.2.2",
+        "typescript"  : "^3.8.3",
+        "tap-junit"   : "^3.1.2"
+    },
+    "config": {
+        "allow-same-version": true,
+        "git-tag-version"   : false
+    },
+    "_moduleAliases": {
+        "@source": "dist"
+    }
+}

@@ -1,0 +1,33 @@
+name: "pr_title_check"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        name: checkout
+      - run: |
+          cd pr_title_check
+          echo "---------------------------------------"
+          yarn install
+          echo "---------------------------------------"
+          yarn run build
+          echo "---------------------------------------"
+          yarn run tests
+        name: build
+
+  # Nothing really to test, becuase it's for PRs
+  test_e2e: # make sure the action works on a clean machine without building
+    needs:
+      - build_test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./pr_title_check
+        with:
+          pattern: '^\[?KEY-\d+\]?\s?'

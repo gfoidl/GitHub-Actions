@@ -1,0 +1,10 @@
+name: 'PR title check'
+description: 'Checks if a PR title matches a pattern'
+author: 'gfoidl'
+inputs:
+  pattern:
+    description: 'pattern to match the PR title against'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/main.js'

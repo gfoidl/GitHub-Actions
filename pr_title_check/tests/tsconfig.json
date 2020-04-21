@@ -1,0 +1,15 @@
+{
+    "extends"        : "../../tsconfig.base.json",
+    "compilerOptions": {
+        "outDir" : "../out/tests",
+        "baseUrl": ".",
+        "paths": {
+            "@source/*": [ "../source/*" ]
+        }
+    },
+    "references": [
+        {
+            "path": "../source"
+        }
+    ]
+}
