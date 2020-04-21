@@ -9,6 +9,8 @@ Verifies the PR-name starts with the given pattern. If not, the a comment is pos
 
 ### Usage
 
+[Declaration](./pr_title_check/action.yml)
+
 ```yml
 on:
   pull_request:
@@ -22,5 +24,27 @@ jobs:
     steps:
         - uses: gfoidl/GitHub-Actions/pr_title_check
           with:
+            message: PR title does not match
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             pattern: '^\[?KEY-\d+\]?\s?'
+```
+
+Or specifically for Jira:
+
+```yml
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+
+jobs:
+  pr_title_check:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: gfoidl/GitHub-Actions/pr_title_check
+          with:
+            message: PR title does not match
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            matchJira: 1
 ```

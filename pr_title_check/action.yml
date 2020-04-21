@@ -2,8 +2,17 @@ name: 'PR title check'
 description: 'Checks if a PR title matches a pattern'
 author: 'gfoidl'
 inputs:
+  message:
+    description:  'the message to comment in the PR if the title doesn''t match'
+    required: true
   pattern:
     description: 'pattern to match the PR title against'
+    required: false
+  matchJira:
+    description: 'pattern to match Jira issues in the format [KEY-123]'
+    required: false
+  GITHUB_TOKEN:
+    description: 'Github token of the repository (automatically created by Github)'
     required: true
 runs:
   using: 'node12'

@@ -30,4 +30,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./pr_title_check
         with:
-          pattern: '^\[?KEY-\d+\]?\s?'
+          message: PR title does not match
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          matchJira: 1
