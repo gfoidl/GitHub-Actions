@@ -3,13 +3,19 @@ description: 'Checks if a PR title matches a pattern'
 author: 'gfoidl'
 inputs:
   message:
-    description:  'the message to comment in the PR if the title doesn''t match'
+    description:  the message to comment in the PR if the title doesn't match
     required: true
+  mode:
+    description: either 'comment' or 'fail', to describe what the action should do if the PR title doesn't match, defaults to 'comment'
+    required: false
   pattern:
-    description: 'pattern to match the PR title against'
+    description: pattern to match the PR title against
     required: false
   matchJira:
-    description: 'pattern to match Jira issues in the format [KEY-123]'
+    description: set any value, to use a pattern to match Jira issues in the format [KEY-123]
+    required: false
+  checkJiraBranchName:
+    description: set any value, to check if the branch name starts with the Jira issue key pattern
     required: false
   GITHUB_TOKEN:
     description: 'Github token of the repository (automatically created by Github)'

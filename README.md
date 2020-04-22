@@ -9,8 +9,6 @@ Verifies the PR-name starts with the given pattern. If not, the a comment is pos
 
 ### Usage
 
-[Declaration](./pr_title_check/action.yml)
-
 ```yml
 on:
   pull_request:
@@ -47,4 +45,7 @@ jobs:
             message: PR title does not match
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             matchJira: 1
+            checkJiraBranchName: 1
 ```
+
+Further info in the [declaration](./pr_title_check/action.yml).

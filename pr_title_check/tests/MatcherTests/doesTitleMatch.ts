@@ -3,7 +3,7 @@ import Matcher                           from "@source/matcher";
 import { TestFixture, TestCase, Expect } from "alsatian";
 //-----------------------------------------------------------------------------
 @TestFixture()
-export class Matcher_isMatch {
+export class Matcher_doesTitleMatch {
     @TestCase("key-123"         , false)
     @TestCase("Key-123"         , false)
     @TestCase(" KEY-123"        , false)
@@ -19,7 +19,7 @@ export class Matcher_isMatch {
     @TestCase("[KEY-2234] swer" , true)
     public Pattern_title_given___OK(title: string, expected: boolean): void {
         const pattern = "^\\[KEY-\\d+\\](\\s.*)?$";
-        const actual  = Matcher.isMatch(pattern, title);
+        const actual  = Matcher.doesTitleMatch(pattern, title);
 
         Expect(actual).toBe(expected);
     }
@@ -40,7 +40,7 @@ export class Matcher_isMatch {
     @TestCase("[KEY-2234] swer"          , true)
     @TestCase("[DEF-2234] xysdfwer werwr", true)
     public Jira_pattern_title_given___OK(title: string, expected: boolean): void {
-        const actual = Matcher.isJiraMatch(title);
+        const actual = Matcher.doesTitleMatchJira(title);
 
         Expect(actual).toBe(expected);
     }
