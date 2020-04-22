@@ -2,7 +2,7 @@
 
 ## PR Title check
 
-![build-test](https://github.com/gfoidl/GitHub-Actions/workflows/pr_title_check/badge.svg) 
+![build-test](https://github.com/gfoidl/GitHub-Actions/workflows/pr_title_check/badge.svg)  
 [Source](./pr_title_check/)
 
 Verifies the PR-name starts with the given pattern. If not, the a comment is posted to the PR.
