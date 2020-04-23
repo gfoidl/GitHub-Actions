@@ -20,7 +20,7 @@ jobs:
   pr_title_check:
     runs-on: ubuntu-latest
     steps:
-        - uses: gfoidl/GitHub-Actions/pr_title_check
+        - uses: gfoidl/GitHub-Actions/pr_title_check@master
           with:
             message: PR title does not match
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,7 +40,7 @@ jobs:
   pr_title_check:
     runs-on: ubuntu-latest
     steps:
-        - uses: gfoidl/GitHub-Actions/pr_title_check
+        - uses: gfoidl/GitHub-Actions/pr_title_check@master
           with:
             message: PR title does not match
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
