@@ -20,11 +20,11 @@ class Worker {
                 return;
             }
             const commentInfo = Object.assign(Object.assign({}, context.repo), { issue_number: pullRequest.number });
-            let hasCheckedPassed = true;
+            let hasChecksPassed = true;
             let messsage = "";
             if (!this.doesTitleMatch(pullRequest.title)) {
                 messsage = tslib_1.__classPrivateFieldGet(this, _config).message;
-                hasCheckedPassed = false;
+                hasChecksPassed = false;
                 core.info("title does not match");
             }
             else {
@@ -34,18 +34,18 @@ class Worker {
                 core.info("checking branch...");
                 const branch = pullRequest.head.ref;
                 if (!matcher_1.default.doesBranchMatchJira(branch)) {
-                    if (!hasCheckedPassed) {
+                    if (!hasChecksPassed) {
                         messsage += "\n";
                     }
                     messsage += `The branch \`${branch}\` doesn't match the expected Jira-conventions.`;
-                    hasCheckedPassed = false;
+                    hasChecksPassed = false;
                     core.info("branch does not match");
                 }
                 else {
                     core.info("branch does match");
                 }
             }
-            if (hasCheckedPassed) {
+            if (hasChecksPassed) {
                 core.info("all checks passed");
             }
             else {
@@ -81,8 +81,8 @@ class Worker {
     }
     reportNoMatchViaComment(info, message) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            const githubClient = new github.GitHub(tslib_1.__classPrivateFieldGet(this, _config).githubToken);
-            const newComment = yield githubClient.issues.createComment(Object.assign(Object.assign({}, info), { body: message }));
+            const octokit = new github.GitHub(tslib_1.__classPrivateFieldGet(this, _config).githubToken);
+            const newComment = yield octokit.issues.createComment(Object.assign(Object.assign({}, info), { body: message }));
             core.debug(JSON.stringify(newComment));
         });
     }
